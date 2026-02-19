@@ -93,33 +93,52 @@ const Tabs = ({ tabs, active, onChange }) => (
 );
 
 const Config = ({ config, onChange }) => (
-  <div>
-    <h3 style={{ margin: "0 0 16px" }}>Settings</h3>
-    <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 14, maxWidth: 600 }}>
-      <div>
-        <label style={{ display: "block", fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Atlassian API Token</label>
-        <input
-          type="password"
-          value={config.token}
-          onChange={e => onChange({ ...config, token: e.target.value })}
-          placeholder="Paste your Atlassian API token here"
-          style={{ width: "100%", padding: "8px 12px", border: "1px solid #d1d5db", borderRadius: 6, fontSize: 14, boxSizing: "border-box" }}
-        />
-        <p style={{ fontSize: 11, color: "#94a3b8", marginTop: 6 }}>Get your token from: https://id.atlassian.com/manage-profile/security/api-tokens</p>
-      </div>
-      <div>
-        <label style={{ display: "block", fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Req ID Prefix</label>
-        <input
-          value={config.prefix}
-          onChange={e => onChange({ ...config, prefix: e.target.value })}
-          placeholder="e.g., REQ"
-          style={{ width: "100%", padding: "8px 12px", border: "1px solid #d1d5db", borderRadius: 6, fontSize: 14, boxSizing: "border-box" }}
-        />
-      </div>
+  <div style={{ maxWidth: 600 }}>
+    <h3 style={{ margin: "0 0 16px", fontSize: 18, fontWeight: 700 }}>Settings</h3>
+    
+    <div style={{ marginBottom: 24, padding: 16, border: "1px solid #e2e8f0", borderRadius: 8, background: "#f8fafc" }}>
+      <label style={{ display: "block", fontSize: 13, fontWeight: 600, marginBottom: 8, color: "#334155" }}>Atlassian API Token</label>
+      <input
+        type="password"
+        value={config.token}
+        onChange={e => onChange({ ...config, token: e.target.value })}
+        placeholder="Paste your Atlassian API token here"
+        style={{ 
+          width: "100%", 
+          padding: "10px 12px", 
+          border: "1px solid #cbd5e1", 
+          borderRadius: 6, 
+          fontSize: 14, 
+          boxSizing: "border-box",
+          background: "#fff",
+          color: "#1e293b"
+        }}
+      />
+      <p style={{ fontSize: 11, color: "#64748b", marginTop: 8 }}>Get your token from: https://id.atlassian.com/manage-profile/security/api-tokens</p>
+      <p style={{ fontSize: 11, color: config.token ? "#16a34a" : "#dc2626", marginTop: 4, fontWeight: 600 }}>
+        {config.token ? "✓ Token set" : "✗ Token not set"}
+      </p>
     </div>
-    <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 12 }}>
-      Token Status: {config.token ? <span style={{ color: "#16a34a" }}>✓ Set</span> : <span style={{ color: "#dc2626" }}>✗ Not set</span>}
-    </p>
+
+    <div style={{ marginBottom: 24, padding: 16, border: "1px solid #e2e8f0", borderRadius: 8, background: "#f8fafc" }}>
+      <label style={{ display: "block", fontSize: 13, fontWeight: 600, marginBottom: 8, color: "#334155" }}>Req ID Prefix</label>
+      <input
+        value={config.prefix}
+        onChange={e => onChange({ ...config, prefix: e.target.value })}
+        placeholder="e.g., REQ"
+        style={{ 
+          width: "100%", 
+          padding: "10px 12px", 
+          border: "1px solid #cbd5e1", 
+          borderRadius: 6, 
+          fontSize: 14, 
+          boxSizing: "border-box",
+          background: "#fff",
+          color: "#1e293b"
+        }}
+      />
+      <p style={{ fontSize: 11, color: "#64748b", marginTop: 8 }}>Next ID: <b style={{ color: "#3b82f6", fontFamily: "monospace" }}>{config.prefix}-001</b></p>
+    </div>
   </div>
 );
 
