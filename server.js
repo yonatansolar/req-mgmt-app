@@ -37,6 +37,7 @@ app.post('/api/fetch-page', async (req, res) => {
       }
     });
   } catch (error) {
+    console.error('Fetch page error:', error.message);
     res.status(500).json({ 
       error: error.response?.data?.message || error.message 
     });
@@ -63,6 +64,7 @@ app.post('/api/parse-requirements', (req, res) => {
       title: pageTitle
     });
   } catch (error) {
+    console.error('Parse requirements error:', error.message);
     res.status(500).json({ error: error.message });
   }
 });
